@@ -1,12 +1,12 @@
 <?php get_header();
 
-$services_prof = get_post_meta($post->ID, 'services_prof', true ) ?>
+ ?>
 
 <div class="container big-container">
     <div id="archive-professionals">
         <header class="page-header">
             <h1> <?php the_archive_title() ?></h1>
-        </header><!-- .page-header -->
+        </header>
         <div class="row">
             <?php $args = array(
                 'post_type' => 'professionals',
@@ -17,7 +17,9 @@ $services_prof = get_post_meta($post->ID, 'services_prof', true ) ?>
             );
             $result = new WP_Query($args);
             if ($result->have_posts()) : ?>
-                <?php while ($result->have_posts()) : $result->the_post(); ?>
+                <?php while ($result->have_posts()) : $result->the_post(); 
+                $services_prof = get_field( 'services_prof', get_the_ID());
+                ?>
 
                     <div class="col-lg-4">
                         <div class="blocks-container">

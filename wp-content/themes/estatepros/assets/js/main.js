@@ -1,6 +1,34 @@
 jQuery(document).ready(function ($) {
 
-	$('a[href="' + window.location + '"]').addClass('active');
+	$(".click-category").click(function (e){
+		e.preventDefault();
+		var currentCategoryId = parseInt($(this).data('category-id')),
+			professional = $('.prof-category > div.col-lg-4');
+		professional.hide();
+		for(var i in professional){
+			var item = professional[i];
+			if (item.nodeName === 'DIV') {
+				var jqItem = $(item),
+					cats = jqItem.data('post-category-id').toString(),
+					catsList = cats.split(',');
+				for (var j in catsList) {
+					if (parseInt(catsList[j]) === currentCategoryId) {
+						jqItem.show();
+					}
+				}
+				// console.log(cats.split(','));
+			}
+		} 
+
+		// console.log(currentCategoryId);
+	});
+
+
+	//menu active
+	if($("#menu-header-menu")){
+		$('a[href="' + window.location + '"]').addClass('active');
+	}
+	//end menu active
 
 	$(function () {
 		var header = $(".header-container");

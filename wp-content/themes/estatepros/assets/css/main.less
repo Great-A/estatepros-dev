@@ -60,6 +60,7 @@ body {
     border-radius: 50px;
     font-weight: 600;
     line-height: 17px;
+    cursor: pointer;
 
     &:hover {
         text-decoration: none;
@@ -71,6 +72,7 @@ body {
     color: @--white;
     background-color: @--blue;
     padding: 16px 45px;
+    border: none;
 
     &:hover {
         opacity: 0.8;
@@ -388,11 +390,13 @@ header {
 
     .blocks-container {
         margin: 20px auto;
+
     }
 }
 
 #section-4,
-#archive-professionals {
+#archive-professionals,
+#directory {
     padding-bottom: 90px;
 
     a {
@@ -400,14 +404,18 @@ header {
     }
 
     .blocks-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
         border: 2px solid @--grey-4;
         border-radius: 20px;
         padding: 60px 10px 50px;
         cursor: pointer;
-
         background-color: @--white;
         text-align: center;
         max-width: 370px;
+        min-height: 548px;
 
         &:hover {
             .btn-white {
@@ -609,49 +617,14 @@ header {
         .img-wrapper {
             position: relative;
         }
+
+        .feedback-container {
+            padding-top: 80px;
+        }
     }
 
 
 }
-
-// .wpcf7 {
-//     .wpcf7-submit {
-//         border-radius: 50px;
-//         font-weight: 600;
-//         line-height: 17px;
-//         color: @--white;
-//         background-color: @--blue;
-//         padding: 16px 45px;
-//         cursor: pointer;
-//         border: 0;
-
-//         &:hover {
-//             opacity: 0.8;
-//         }
-//     }
-
-//     textarea,
-//     input {
-//         width: 100%;
-//         border: 0;
-//         background-color: @--grey-4;
-
-//         &:focus-visible {
-//             border: 0;
-//         }
-//     }
-
-//     input {
-//         height: 30px;
-//     }
-
-//     textarea {
-//         resize: none;
-//         height: 100px;
-//         margin-top: 15px;
-//     }
-// }
-
 
 .wpcf7-form p {
     width: 100%;
@@ -684,6 +657,11 @@ form.wpcf7-form {
     outline: none;
     box-sizing: border-box;
 
+}
+
+.wpcf7-form .textarea .cf-input {
+    resize: none;
+    height: 150px;
 }
 
 .wpcf7-form .cf-input:hover,
@@ -730,4 +708,16 @@ form.wpcf7-form {
 
     }
 
+}
+
+#blog {
+    padding: 80px 0;
+}
+
+.display-none {
+    display: none;
+}
+
+.display-block {
+    display: block;
 }

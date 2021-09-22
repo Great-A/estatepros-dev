@@ -58,7 +58,8 @@ define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
 define( 'NONCE_SALT',       'put your unique phrase here' );
 
 /**#@-*/
-
+define('WP_HOME', 'http://estatepros-dev/');
+define('WP_SITEURL', 'http://estatepros-dev/');
 /**
  * WordPress database table prefix.
  *
