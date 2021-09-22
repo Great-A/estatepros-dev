@@ -136,7 +136,7 @@ h3 {
 }
 
 .active {
-    color: @--blue;
+    color: @--blue !important;
     font-weight: bold;
 }
 
@@ -432,7 +432,7 @@ header {
 
         .names {
             font-weight: bold;
-            font-size: 36px;
+            font-size: 28px;
             line-height: 43px;
             color: @--grey-3;
         }
@@ -608,10 +608,20 @@ header {
     .content-directory {
         padding: 100px 0;
 
-        p {
-            font-weight: normal;
-            font-size: 24px;
-            line-height: 43px;
+        .prof-category {
+            ul{
+                display: flex;
+                justify-content: space-evenly;
+                flex-wrap: wrap;
+                margin-bottom: 50px;
+            }
+            
+            a {
+                font-size: 16px;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
 
         .img-wrapper {
@@ -620,7 +630,17 @@ header {
 
         .feedback-container {
             padding-top: 80px;
+
+            p {
+                font-weight: normal;
+                font-size: 24px;
+                line-height: 43px;
+            }
         }
+    }
+
+    .blocks-container {
+        margin: 20px 0;
     }
 
 

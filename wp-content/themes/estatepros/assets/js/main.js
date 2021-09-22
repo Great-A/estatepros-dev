@@ -1,9 +1,15 @@
 jQuery(document).ready(function ($) {
 
 	$(".click-category").click(function (e){
+
+
+			  $(this).parent().addClass('active').siblings().removeClass('active');
+		
+
+
 		e.preventDefault();
 		var currentCategoryId = parseInt($(this).data('category-id')),
-			professional = $('.prof-category > div.col-lg-4');
+			professional = $('.prof-box > div.col-lg-4');
 		professional.hide();
 		for(var i in professional){
 			var item = professional[i];
@@ -14,15 +20,12 @@ jQuery(document).ready(function ($) {
 				for (var j in catsList) {
 					if (parseInt(catsList[j]) === currentCategoryId) {
 						jqItem.show();
+						
 					}
 				}
-				// console.log(cats.split(','));
 			}
 		} 
-
-		// console.log(currentCategoryId);
 	});
-
 
 	//menu active
 	if($("#menu-header-menu")){

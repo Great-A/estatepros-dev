@@ -101,7 +101,7 @@ h3 {
   color: #64C6B8;
 }
 .active {
-  color: #15A3C4;
+  color: #15A3C4 !important;
   font-weight: bold;
 }
 header .header-container {
@@ -349,7 +349,7 @@ header .cross {
 #archive-professionals .blocks-container .names,
 #directory .blocks-container .names {
   font-weight: bold;
-  font-size: 36px;
+  font-size: 28px;
   line-height: 43px;
   color: #434343;
 }
@@ -491,16 +491,31 @@ header .cross {
 #directory .content-directory {
   padding: 100px 0;
 }
-#directory .content-directory p {
-  font-weight: normal;
-  font-size: 24px;
-  line-height: 43px;
+#directory .content-directory .prof-category ul {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+#directory .content-directory .prof-category a {
+  font-size: 16px;
+}
+#directory .content-directory .prof-category a:hover {
+  text-decoration: underline;
 }
 #directory .content-directory .img-wrapper {
   position: relative;
 }
 #directory .content-directory .feedback-container {
   padding-top: 80px;
+}
+#directory .content-directory .feedback-container p {
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 43px;
+}
+#directory .blocks-container {
+  margin: 20px 0;
 }
 .wpcf7-form p {
   width: 100%;

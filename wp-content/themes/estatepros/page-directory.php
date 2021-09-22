@@ -14,7 +14,8 @@
 
     <div class="container big-container">
         <div class="content-directory">
-            <div class="row">
+            <div class="prof-category">
+                <ul>
                 <?php
                 $args = array(
                     'post_type' => 'professionals',
@@ -30,15 +31,16 @@
                 foreach ($categories_prof as $cp) {
                 ?>
 
-                    <a data-category-id=<?= $cp->term_id ?> href="<?= get_category_link($cp->term_id) ?>" class="click-category">
+                    <li><a data-category-id=<?= $cp->term_id ?> href="<?= get_category_link($cp->term_id) ?>" class="click-category">
                         <?php echo $cp->name; ?>
-                    </a>
+                    </a></li>
 
                 <?php
                 }
                 ?>
+                </ul>
             </div>
-            <div class="row prof-category">
+            <div class="row prof-box">
                 <?php
                 $result = new WP_Query($args);
                 if ($result->have_posts()) : ?>
