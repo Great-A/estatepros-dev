@@ -143,6 +143,16 @@
   #directory .blocks-container {
     margin: 10px auto;
   }
+  #professionals .col-md-8 {
+    width: 100%;
+  }
+  #professionals .info-prof {
+    flex-direction: column-reverse;
+  }
+  #professionals .about-prof {
+    margin: auto;
+    text-align: center;
+  }
 }
 @media (max-width: 576px) {
   #section-1 {

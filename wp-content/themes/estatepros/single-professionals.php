@@ -6,14 +6,8 @@ $services_prof = get_field('services_prof', get_the_ID());
 ?>
 
 <div id="professionals">
-
     <div class="container big-container">
-        
-        <div class="row">
-
-        </div>
-
-        <div class="row">
+        <div class="row info-prof">
             <div class="col-md-8">
                 <div class="content-prof-wrapp">
                     <?php the_content(); ?>
