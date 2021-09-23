@@ -110,6 +110,7 @@ header .header-container {
   position: fixed;
   width: 100%;
   z-index: 2;
+  transition: all 250ms linear;
 }
 header .header-container .header-wrapper {
   display: flex;

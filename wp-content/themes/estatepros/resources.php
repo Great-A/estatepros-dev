@@ -9,7 +9,8 @@ Template Name: Resources
  $resources_hero_title = get_field('resources_hero_title', $ID);
  $resources_hero_subtitle = get_field('resources_hero_subtitle', $ID);
  $resources_video_1 = get_field('resources_video_1', $ID);
-
+ $resources_video_2 = get_field('resources_video_2', $ID);
+ $resources_video_3 = get_field('resources_video_3', $ID);
 
  ?>
  
@@ -17,15 +18,15 @@ Template Name: Resources
     <div class="container big-container">
         <h1 class="resources-hero-title"><?= $resources_hero_title ?></h1>
         <h4 class="resources-hero-subtitle"><?= $resources_hero_subtitle ?></h4>
-        <div class="rr-link-row">
+        <!-- <div class="rr-link-row">
             <a href="" class="rr-link button btn-light">see videos</a>
             <a href="" class="rr-link button btn-light">see articles</a>
-        </div>
+        </div> -->
     </div>
 </section>
 <section class="resources-title-section">
     <div class="container big-container">
-        <h2 class="resources-load-title"><?= $resources_big_title ?></span></h2>
+        <h2 class="resources-load-title"><?= $resources_big_title ?></h2>
     </div>
 </section>
 <section class="resources-load-section">
@@ -33,59 +34,64 @@ Template Name: Resources
         <div class="resources-row">
             <div class="rr-item">
                 <h3 class="rr-title">Videos</h3>
-                <div class="rr-video-wraper">
+                <div class="rr-video-wraper rr-first">
                     <?= $resources_video_1 ?>
+                </div>
+                <div class="rr-video-wraper">
+                    <?= $resources_video_2 ?>
+                </div>
+                <div class="rr-video-wraper">
+                    <?= $resources_video_3 ?>
                 </div>
             </div>
             <div class="rr-item">
-            <h3 class="rr-title">Articles</h3>
-            
-            <div class="article-item">
-                <h4 class="articles-title"><a href="<?= the_permalink($ID=244) ?>" class="rr-post-link"><?= get_the_title($ID) ?></a></h4>
-                <?php $cats = get_the_category($ID);
-                $cat_names = array_column($cats, 'name'); ?>
-
-                <p class="article-category"><?= implode(', ', $cat_names) ?></p>
-            </div>
-            <div class="article-item">
-                <h4 class="articles-title"><a href="<?= the_permalink($ID=1) ?>" class="rr-post-link"><?= get_the_title($ID) ?></a></h4>
-                <?php $cats = get_the_category($ID);
-                $cat_names = array_column($cats, 'name'); ?>
-                <p class="article-category"><?= implode(', ', $cat_names) ?></p>
-            </div>
-            <div class="article-item">
-                <h4 class="articles-title"><a href="<?= the_permalink($ID=252) ?>" class="rr-post-link"><?= get_the_title($ID) ?></a></h4>
-                <?php $cats = get_the_category($ID);
-                $cat_names = array_column($cats, 'name'); ?>
-                <p class="article-category"><?= implode(', ', $cat_names) ?></p>
-            </div>
-            <div class="article-item">
-                <h4 class="articles-title"><a href="<?= the_permalink($ID=250) ?>" class="rr-post-link"><?= get_the_title($ID) ?></a></h4>
-                <?php $cats = get_the_category($ID);
-                $cat_names = array_column($cats, 'name'); ?>
-                <p class="article-category"><?= implode(', ', $cat_names) ?></p>
-            </div>
-            <div class="article-item">
-                <h4 class="articles-title"><a href="<?= the_permalink($ID=246) ?>" class="rr-post-link"><?= get_the_title($ID) ?></a></h4>
-                <?php $cats = get_the_category($ID);
-                $cat_names = array_column($cats, 'name'); ?>
-                <p class="article-category"><?= implode(', ', $cat_names) ?></p>
-            </div>
-            <div class="article-item">
-                <h4 class="articles-title"><a href="<?= the_permalink($ID=244) ?>" class="rr-post-link"><?= get_the_title($ID) ?></a></h4>
-                <?php $cats = get_the_category($ID);
-                $cat_names = array_column($cats, 'name'); ?>
-                <p class="article-category"><?= implode(', ', $cat_names) ?></p>
-            </div>
-            
+                <h3 class="rr-title rr-second">Articles</h3>
+                <?php
+                $query = get_posts([
+                    'post_type' => 'post',
+                    'post_status' => 'publish',
+                    'posts_per_page' => 6,
+                    'fields' => 'ids',
+                ]);
+                
+                for ($i = 0; $i < 6 ; $i++) {
+                        $ID = $query[$i]; ?>
+                        <div class="article-item">
+                            <h4 class="articles-title"><a href="<?= the_permalink($ID) ?>" class="rr-post-link"><?= get_the_title($ID) ?></a></h4>
+                            <?php $cats = get_the_category($ID);
+                            $cat_names = array_column($cats, 'name'); ?>
+                            <p class="article-category"><?= implode(', ', $cat_names) ?></p>
+                        </div>
+                    <?php
+               } ?>
             </div>
         </div>
+        <a href="#" class="rr-load-more button btn-blue">load more</a>
     </div>
 </section>
 <style>
+    header .header-container {
+        transition: all ease 500ms;
+    }
+    .page-template-resources div {
+        box-sizing: border-box;
+    }
+    .rr-load-more {
+        margin: 30px auto;
+        max-width: 100px;
+        transition: all 250ms linear;
+        display: block;
+        text-transform: capitalize;
+        text-align: center;
+    }
+    
     .rr-video-wraper {
-        border-radius: 15px;
-        margin-bottom: 15px;
+        border-radius: 25px;
+        overflow: hidden;
+        margin-top: 30px;
+    }
+    .rr-video-wraper.rr-first {
+        margin-top: 60px;
     }
     .resources-hero-title {
         text-align: center;
@@ -105,18 +111,17 @@ Template Name: Resources
         text-transform: unset;
         color: #2AA2C7;
         font-weight: 700;
-        
     }
-    .resources-load-title span {
+    .resources-load-title .rr-title-alt {
         color: #63C2B7;
         font-weight: 400;
     }
     .resources-hero-section {
         color: #fff;
-        padding: 200px 0;
+        padding: 150px 0 300px 0;
         background: linear-gradient(180deg,rgba(102,102,102,0.53) 0%,rgba(102,102,102,0.53) 100%),url('<?= $resources_hero_background ?>');
         background-repeat: no-repeat;
-        background-position: center 38%;
+        background-position: center 44%;
         background-size: cover;
     }
     .resources-title-section {
@@ -178,5 +183,53 @@ Template Name: Resources
         font-size: 24px;
         line-height: 1.2;
     }
+    .rr-item iframe {
+        width: 100%;
+    }
+    @media (max-width: 1199px) {
+        .resources-row {
+            flex-direction: column;
+        }
+        .rr-item:first-child,
+        .rr-item:last-child {
+            padding: 0;
+            border: none;
+        }
+        .rr-item:first-child {
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+    }
+    @media (max-width: 767px) {
+        .resources-load-section,
+        .resources-title-section {
+            padding: 50px 0;
+        }
+        .rr-title {
+            font-size: 46px;
+        }
+        .articles-title {
+            font-size: 30px;
+        }
+        .rr-video-wraper.rr-first {
+            margin-top: 30px;
+        }
+        .rr-title.rr-second {
+            margin-bottom: 0;
+        }
+        .resources-load-title  br {
+            display: none;
+        }
+        h2.resources-load-title {
+            font-size: 40px;
+        }
+        .resources-hero-subtitle {
+            font-size: 36px;
+        }
+        h1.resources-hero-title {
+            font-size: 50px;
+        }
+    }
 </style>
-<?php get_footer(); ?>
+<?php get_footer();
+?>

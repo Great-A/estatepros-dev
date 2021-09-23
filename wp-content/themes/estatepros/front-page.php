@@ -14,6 +14,7 @@ $sec_1_img = get_field('img_section_1', get_the_ID());
 $sec_2_block = get_field('section_2_block', get_the_ID());
 $sec_3_block = get_field('content_section_3', get_the_ID());
 $sec_4_block = get_field('section_4_block', get_the_ID());
+$sec_4_button = get_field('button_section_4', get_the_ID());
 
 ?>
 
@@ -125,7 +126,7 @@ $sec_4_block = get_field('section_4_block', get_the_ID());
         </div>
         <div class="row">
             <div class="col-md container-btn">
-                <a href="" class="button btn-blue">Show More</a>
+                <a href="<?= $sec_4_button['url_button'] ?>" class="button btn-blue"><?= $sec_4_button['text_button'] ?></a>
             </div>
         </div>
     </div>

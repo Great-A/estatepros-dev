@@ -31,13 +31,14 @@ $subtitle_2_directory = get_field('subtitle_2_directory', get_the_ID());
                     'posts_per_page' => -1
                 );
                 $categories_prof = get_categories($args);
+                
 
 
                 foreach ($categories_prof as $cp) {
                 ?>
 
                     <li><a data-category-id=<?= $cp->term_id ?> href="<?= get_category_link($cp->term_id) ?>" class="click-category">
-                        <?php echo $cp->name; ?>
+                        <?php echo $cp->name;?>
                     </a></li>
 
                 <?php

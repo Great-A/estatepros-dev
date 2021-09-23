@@ -1,12 +1,15 @@
 jQuery(document).ready(function ($) {
 
+		//menu active
+		
+			$('#menu-header-menu a[href="' + window.location + '"]').addClass('active');
+		
+		//end menu active
+
 	$(".click-category").click(function (e){
 
-
-			  $(this).parent().addClass('active').siblings().removeClass('active');
+		$(this).parent().addClass('active').siblings().removeClass('active');
 		
-
-
 		e.preventDefault();
 		var currentCategoryId = parseInt($(this).data('category-id')),
 			professional = $('.prof-box > div.col-lg-4');
@@ -23,15 +26,12 @@ jQuery(document).ready(function ($) {
 						
 					}
 				}
-			}
+			} 
+			
 		} 
 	});
 
-	//menu active
-	if($("#menu-header-menu")){
-		$('a[href="' + window.location + '"]').addClass('active');
-	}
-	//end menu active
+
 
 	$(function () {
 		var header = $(".header-container");
