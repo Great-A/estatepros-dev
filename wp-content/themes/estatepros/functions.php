@@ -66,29 +66,35 @@ function true_register_post_type_init() {
 		'has_archive' => true, 
 		'menu_icon' => 'dashicons-groups', 
 		'menu_position' => 20,
-		'taxonomies'  => array( 'category' ),
 		'supports' => array( 'title', 'editor', 'comments', 'author', 'thumbnail')
 	);
 	register_post_type('professionals', $args);
 }
 // end post-type
 
-
-
-add_filter( 'get_the_archive_title', function ($title) {    
-	if ( is_category() ) {    
-			$title = single_cat_title( '', false );    
-		} elseif ( is_tag() ) {    
-			$title = single_tag_title( '', false );    
-		} elseif ( is_author() ) {    
-			$title = '<span class="vcard">' . get_the_author() . '</span>' ;    
-		} elseif ( is_tax() ) { //for custom post types
-			$title = sprintf( __( '%1$s' ), single_term_title( '', false ) );
-		} elseif (is_post_type_archive()) {
-			$title = post_type_archive_title( '', false );
-		}
-	return $title;    
+add_action('init', function() {
+	register_taxonomy('category_prof', ['professionals'], [
+		'label' => __('Categories', 'txtdomain'),
+		'hierarchical' => false,
+		'rewrite' => ['slug' => 'category-prof'],
+		'show_admin_column' => true,
+		'show_in_rest' => true,
+		'labels' => [
+			'singular_name' => __('Professional categories', 'txtdomain'),
+			'all_items' => __('All categories', 'txtdomain'),
+			'edit_item' => __('Edit categories', 'txtdomain'),
+			'view_item' => __('View Category', 'txtdomain'),
+			'update_item' => __('Update Category', 'txtdomain'),
+			'add_new_item' => __('Add New Category', 'txtdomain'),
+			'new_item_name' => __('New Category Name', 'txtdomain'),
+			'search_items' => __('Search Categories', 'txtdomain'),
+			'popular_items' => __('Popular Categories', 'txtdomain'),
+			'separate_items_with_commas' => __('Separate Categories with comma', 'txtdomain'),
+			'choose_from_most_used' => __('Choose from most used Categories', 'txtdomain'),
+			'not_found' => __('No Categories found', 'txtdomain'),
+		]
+	]);
+	register_taxonomy_for_object_type('category_prof', 'professionals');
 });
-
 
 ?>

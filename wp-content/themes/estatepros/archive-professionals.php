@@ -5,7 +5,7 @@
 <div class="container big-container">
     <div id="archive-professionals">
         <header class="page-header">
-            <h1> <?php the_archive_title() ?></h1>
+            <h1> Professionals</h1>
         </header>
         <div class="row">
             <?php $args = array(

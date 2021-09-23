@@ -27,7 +27,8 @@ $subtitle_2_directory = get_field('subtitle_2_directory', get_the_ID());
                     'orderby'    => 'ID',
                     'post_status' => 'publish',
                     'order'    => 'DESC',
-                    'taxonomy' => 'category',
+                    'taxonomy' => 'category_prof',
+                    'hide_empty' => 0,
                     'posts_per_page' => -1
                 );
                 $categories_prof = get_categories($args);
@@ -53,7 +54,8 @@ $subtitle_2_directory = get_field('subtitle_2_directory', get_the_ID());
                     <?php while ($result->have_posts()) : $result->the_post();
                         $services_prof = get_field('services_prof', get_the_ID());
                     ?>
-                        <?php $category = get_the_terms(get_the_ID(), 'category');
+                        <?php $category = get_the_terms(get_the_ID(), 'category_prof');
+                        
                         $category_ids_arr = [];
 
                         foreach ($category as $cat) {
@@ -77,7 +79,8 @@ $subtitle_2_directory = get_field('subtitle_2_directory', get_the_ID());
 
 
                     <?php endwhile; ?>
-                <?php endif;
+                    
+                    <?php endif;
                 wp_reset_postdata(); ?>
 
             </div>

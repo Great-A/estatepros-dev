@@ -12,9 +12,10 @@ jQuery(document).ready(function ($) {
 		
 		e.preventDefault();
 		var currentCategoryId = parseInt($(this).data('category-id')),
-			professional = $('.prof-box > div.col-lg-4');
+			professional = $('.prof-box > div.col-lg-4'),
+			found = 0;
 		professional.hide();
-		for(var i in professional){
+		for (var i in professional) {
 			var item = professional[i];
 			if (item.nodeName === 'DIV') {
 				var jqItem = $(item),
@@ -23,15 +24,24 @@ jQuery(document).ready(function ($) {
 				for (var j in catsList) {
 					if (parseInt(catsList[j]) === currentCategoryId) {
 						jqItem.show();
-						
 					}
 				}
-			} 
-			
-		} 
+				if (jqItem.is(':visible')) {
+					found++;
+				}
+			}
+		}
+		$('.nobody-found').remove();
+		if (found === 0) {
+			$('.row.prof-box').append('<div class="nobody-found">Nobody found</div>');
+		}
 	});
 
+	$('#reset').click(function(){
+		$('.prof-box > div.col-lg-4').show();
+	});
 
+// jQuery('.click-category[data-category-id=' + window.location.search.split('=')[1] + ']').trigger('click'); // фильтер по GET параметру
 
 	$(function () {
 		var header = $(".header-container");
@@ -68,7 +78,7 @@ jQuery(document).ready(function ($) {
 
 	function checkScreenSize() {
 		var newWindowWidth = $(window).width();
-		if (newWindowWidth < 991) {
+		if (newWindowWidth < 992) {
 			$(".cross").hide();
 			$(".header-menu").hide();
 			$(".toggle").show();
