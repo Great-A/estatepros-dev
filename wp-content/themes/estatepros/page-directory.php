@@ -45,6 +45,7 @@ $subtitle_2_directory = get_field('subtitle_2_directory', get_the_ID());
                 <?php
                 }
                 ?>
+                <li id="reset"><a >Reset</a> </li>
                 </ul>
             </div>
             <div class="row prof-box">

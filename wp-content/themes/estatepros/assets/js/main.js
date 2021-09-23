@@ -3,11 +3,20 @@ jQuery(document).ready(function ($) {
 		//menu active
 		
 			$('#menu-header-menu a[href="' + window.location + '"]').addClass('active');
-		
+
 		//end menu active
+
+	
+		$('#reset').click(function(){
+			$('.prof-box > div.col-lg-4').show();
+			$(".prof-category ul li").siblings().removeClass('active');
+		});
+
+
 
 	$(".click-category").click(function (e){
 
+	
 		$(this).parent().addClass('active').siblings().removeClass('active');
 		
 		e.preventDefault();
@@ -37,9 +46,7 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
-	$('#reset').click(function(){
-		$('.prof-box > div.col-lg-4').show();
-	});
+
 
 // jQuery('.click-category[data-category-id=' + window.location.search.split('=')[1] + ']').trigger('click'); // фильтер по GET параметру
 
