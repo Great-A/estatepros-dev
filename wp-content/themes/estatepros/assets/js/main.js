@@ -1,9 +1,7 @@
 jQuery(document).ready(function ($) {
 
 		//menu active
-		
 			$('#menu-header-menu a[href="' + window.location + '"]').addClass('active');
-
 		//end menu active
 
 	
@@ -19,6 +17,7 @@ jQuery(document).ready(function ($) {
 	
 		$(this).parent().addClass('active').siblings().removeClass('active');
 		
+		//filter professionals
 		e.preventDefault();
 		var currentCategoryId = parseInt($(this).data('category-id')),
 			professional = $('.prof-box > div.col-lg-4'),
@@ -45,10 +44,12 @@ jQuery(document).ready(function ($) {
 			$('.row.prof-box').append('<div class="nobody-found">Nobody found</div>');
 		}
 	});
+//end  filter professionals
 
-
-
-// jQuery('.click-category[data-category-id=' + window.location.search.split('=')[1] + ']').trigger('click'); // фильтер по GET параметру
+$(".btn-blue").click(function () {
+jQuery('.click-category[data-category-id=' + window.location.search.split('=')[18] + ']').trigger('click');
+});
+ // фильтер по GET параметру
 
 	$(function () {
 		var header = $(".header-container");
