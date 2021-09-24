@@ -11,10 +11,10 @@ $sec_1_link_3 = get_field('link_3', get_the_ID());
 $sec_1_link_4 = get_field('link_4', get_the_ID());
 $sec_1_content = get_field('content_section_1', get_the_ID());
 $sec_1_img = get_field('img_section_1', get_the_ID());
-
 $sec_3_block = get_field('content_section_3', get_the_ID());
 $sec_4_block = get_field('section_4_block', get_the_ID());
 $sec_4_button = get_field('button_section_4', get_the_ID());
+
 
 ?>
 
@@ -111,23 +111,29 @@ $sec_4_button = get_field('button_section_4', get_the_ID());
 <section id="section-4">
     <div class="container big-container">
         <div class="row">
-            <?php foreach ($sec_4_block as $b) {
+            <?php $sec_4_prof = get_field('section_4_professionals'); ?>
+            <?php if ($sec_4_prof) :
+
+
+                foreach ($sec_4_prof as $sp) {
+                    $services_prof = get_field('services_prof', $sp->ID);
             ?>
-                <div class="col-lg-4">
-                    <div class="blocks-container">
-                        <a href="<?= $b['url'] ?>">
-                            <img src="<?= wp_get_attachment_image_src($b['img'], 'full')[0] ?>" alt="img">
-                            <div class="names"><?= $b['name'] ?></div>
-                            <?= $b['responsibilities'] ?>
-
-                            <div class="btn-wrapper">
-                                <a href="<?= $b['url'] ?>" class="button btn-white"><?= $b['title_button'] ?></a>
+                    <div class="col-lg-4">
+                        <a href="<?= get_permalink($sp->ID); ?>">
+                            <div class="blocks-container">
+                                <img src="<?= get_the_post_thumbnail_url($sp->ID) ?>" alt="photo-prof">
+                                <div class="names"> <?= get_the_title($sp->ID) ?> </div>
+                                <?= $services_prof ?>
+                                <div class="btn-wrapper">
+                                    <span class="button btn-white">See Pro</span>
+                                </div>
                             </div>
-
                         </a>
+
                     </div>
-                </div>
-            <?php } ?>
+                <?php }
+                wp_reset_postdata(); ?>
+            <?php endif; ?>
         </div>
         <div class="row">
             <div class="col-md container-btn">
