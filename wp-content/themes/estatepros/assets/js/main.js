@@ -96,7 +96,9 @@ function checkScreenSize() {
 	}
 }
 jQuery(window).on('load', function() {
+
 	if (window.location.search) {
+		$('#menu-item-27 a').addClass('active');
 		var cat = window.location.search.split('=');
 		if (cat && cat[1] !== undefined) {
 			jQuery('.click-category[data-category-id=' + cat[1] + ']').trigger('click');
