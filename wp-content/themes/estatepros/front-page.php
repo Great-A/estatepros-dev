@@ -11,7 +11,7 @@ $sec_1_link_3 = get_field('link_3', get_the_ID());
 $sec_1_link_4 = get_field('link_4', get_the_ID());
 $sec_1_content = get_field('content_section_1', get_the_ID());
 $sec_1_img = get_field('img_section_1', get_the_ID());
-$sec_2_block = get_field('section_2_block', get_the_ID());
+
 $sec_3_block = get_field('content_section_3', get_the_ID());
 $sec_4_block = get_field('section_4_block', get_the_ID());
 $sec_4_button = get_field('button_section_4', get_the_ID());
@@ -56,23 +56,27 @@ $sec_4_button = get_field('button_section_4', get_the_ID());
     </div>
 </section>
 
+<?php $category_prof = get_terms([
+    'taxonomy' => 'category_prof',
+    'orderby'    => 'ID',
+    'hide_empty' => false,
+]);
+?>
+
 <section id="section-2">
     <div class="container big-container sec-2-container">
         <div class="row slider">
-            <?php foreach ($sec_2_block as $b) { ?>
+            <?php foreach ($category_prof as $cp) {
+                $sec_2_pc_icon = get_field('pc_icon', 'term_' . $cp->term_id); ?>
                 <div class="col-md-4">
                     <div class="blocks-container">
-                        <a href="<?= $sub_value_button['url'] ?>">
-                            <img src="<?= wp_get_attachment_image_src($b['img'], 'full')[0] ?>" alt="img">
-                            <h3><?= $b['title'] ?></h3>
-                            <?= $b['text'] ?>
-
-                            <?php if (have_rows('section_2_block')) : the_row();
-                                $sub_value_button = get_sub_field('button'); ?>
-                                <div class="bnt-wrapper">
-                                    <a href="<?= $sub_value_button['url'] ?>" class="button btn-white"><?= $sub_value_button['name'] ?></a>
-                                </div>
-                            <?php endif; ?>
+                        <a href="/directory/?cat=<?= $cp->term_id ?>">
+                            <img src="<?= $sec_2_pc_icon ?>" alt="img-category">
+                            <h3> <?= $cp->name; ?></h3>
+                            <p><?= $cp->description; ?></p>
+                            <div class="bnt-wrapper">
+                                <span class="button btn-white">Find a Proffesional</span>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -107,7 +111,8 @@ $sec_4_button = get_field('button_section_4', get_the_ID());
 <section id="section-4">
     <div class="container big-container">
         <div class="row">
-            <?php foreach ($sec_4_block as $b) { ?>
+            <?php foreach ($sec_4_block as $b) {
+            ?>
                 <div class="col-lg-4">
                     <div class="blocks-container">
                         <a href="<?= $b['url'] ?>">
@@ -126,7 +131,7 @@ $sec_4_button = get_field('button_section_4', get_the_ID());
         </div>
         <div class="row">
             <div class="col-md container-btn">
-                <a href="<?= $sec_4_button['url_button'] ?>" class="button btn-blue"><?= $sec_4_button['text_button'] ?></a>
+                <a href="<?= $sec_4_button['url_button'] ?>" class="button btn-blue">Show More</a>
             </div>
         </div>
     </div>

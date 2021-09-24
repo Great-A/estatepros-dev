@@ -1,5 +1,14 @@
 @--white: #FFFFFF;
-
+@media (min-width: 991px) {
+	header {
+		.header-bg-scroll {
+        background-color: @--grey-4;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+        padding: 10px 0 !important;
+        z-index: 999;
+    	}
+	}
+} 
 @media (min-width: 1510px) {
     #section-1 {
 
@@ -129,11 +138,7 @@
                                 margin: 0;
                             }
                         }
-                    }
-
-                    .header-logo {
-                        padding-left: 30px;
-                    }
+					}
                 }
 
                 .button-wrapper-header {
@@ -274,7 +279,6 @@
         padding-top: 60px;
 
         .h2-blue {
-
             font-size: 40px;
         }
     }

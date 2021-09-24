@@ -26,7 +26,6 @@ $subtitle_2_directory = get_field('subtitle_2_directory', get_the_ID());
                     'post_type' => 'professionals',
                     'orderby'    => 'ID',
                     'post_status' => 'publish',
-                    'order'    => 'DESC',
                     'taxonomy' => 'category_prof',
                     'hide_empty' => 0,
                     'posts_per_page' => -1
