@@ -17,7 +17,8 @@ jQuery(document).ready(function ($) {
 $(".click-category").click(function (e){
 
 
-	$(this).parent().addClass('active').siblings().removeClass('active');
+	$('.click-category.active').removeClass('active');
+    $(this).addClass('active');
 	
 	e.preventDefault();
 	var currentCategoryId = parseInt($(this).data('category-id')),
@@ -48,7 +49,6 @@ $(".click-category").click(function (e){
 
 
 
-// jQuery('.click-category[data-category-id=' + window.location.search.split('=')[1] + ']').trigger('click'); // фильтер по GET параметру
 
 $(function () {
 	var header = $(".header-container");

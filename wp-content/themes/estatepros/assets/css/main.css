@@ -291,8 +291,9 @@ header .cross {
   padding-right: 70px;
   font-weight: 400;
 }
-#section-4 .blocks-container {
-  margin: -200px auto 40px;
+#section-4 .container-prof {
+  margin-top: -200px;
+  margin-bottom: 40px;
 }
 #archive-professionals h1 {
   font-size: 60px;
@@ -305,6 +306,17 @@ header .cross {
 #archive-professionals,
 #directory {
   padding-bottom: 90px;
+}
+#section-4 .container-prof .prof-column,
+#archive-professionals .container-prof .prof-column,
+#directory .container-prof .prof-column {
+  display: flex;
+}
+#section-4 .container-prof .prof-column .container-link,
+#archive-professionals .container-prof .prof-column .container-link,
+#directory .container-prof .prof-column .container-link {
+  display: flex;
+  width: 100%;
 }
 #section-4 a,
 #archive-professionals a,
@@ -324,8 +336,7 @@ header .cross {
   cursor: pointer;
   background-color: #FFFFFF;
   text-align: center;
-  max-width: 370px;
-  min-height: 548px;
+  width: 100%;
 }
 #section-4 .blocks-container:hover .btn-white,
 #archive-professionals .blocks-container:hover .btn-white,
@@ -343,10 +354,14 @@ header .cross {
 #section-4 .blocks-container .names,
 #archive-professionals .blocks-container .names,
 #directory .blocks-container .names {
+  line-height: 1.1;
   font-weight: bold;
   font-size: 28px;
-  line-height: 43px;
   color: #434343;
+  align-items: center;
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }
 #section-4 .blocks-container p,
 #archive-professionals .blocks-container p,

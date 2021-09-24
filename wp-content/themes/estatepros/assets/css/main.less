@@ -136,7 +136,7 @@ h3 {
 }
 
 .active {
-    color: @--blue !important;
+    color: @--blue  !important;
     font-weight: bold;
 }
 
@@ -149,7 +149,7 @@ header {
         width: 100%;
         z-index: 2;
         transition: all 250ms linear;
-        
+
         .header-wrapper {
             display: flex;
             flex-wrap: wrap;
@@ -185,7 +185,7 @@ header {
         }
     }
 
-    
+
     .toggle {
         display: none;
         background: none;
@@ -372,8 +372,9 @@ header {
 }
 
 #section-4 {
-    .blocks-container {
-        margin: -200px auto 40px;
+    .container-prof {
+        margin-top: -200px;
+        margin-bottom: 40px;
     }
 }
 
@@ -392,6 +393,15 @@ header {
 #section-4,
 #archive-professionals,
 #directory {
+    .container-prof {
+        .prof-column {
+            display: flex;
+            .container-link{
+                display: flex;
+                width: 100%;
+            }
+        }
+    }
     padding-bottom: 90px;
 
     a {
@@ -409,8 +419,7 @@ header {
         cursor: pointer;
         background-color: @--white;
         text-align: center;
-        max-width: 370px;
-        min-height: 548px;
+        width: 100%;
 
         &:hover {
             .btn-white {
@@ -426,10 +435,14 @@ header {
         }
 
         .names {
+            line-height: 1.1;
             font-weight: bold;
             font-size: 28px;
-            line-height: 43px;
             color: @--grey-3;
+            align-items: center;
+            display: flex;
+            width: 100%;
+            justify-content: center;
         }
 
         p {
@@ -604,7 +617,7 @@ header {
         padding: 100px 0;
 
         .prof-category {
-            ul{
+            ul {
                 display: flex;
                 justify-content: center;
                 flex-wrap: wrap;
@@ -614,9 +627,10 @@ header {
                     margin: 15px 30px;
                 }
             }
-            
+
             a {
                 font-size: 16px;
+
                 &:hover {
                     text-decoration: underline;
                 }
@@ -751,6 +765,7 @@ form.wpcf7-form {
 #reset {
     cursor: pointer;
 }
+
 .wpcf7-form.init button {
     margin-top: 15px;
     font-size: inherit;

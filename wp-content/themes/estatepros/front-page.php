@@ -110,7 +110,7 @@ $sec_4_button = get_field('button_section_4', get_the_ID());
 
 <section id="section-4">
     <div class="container big-container">
-        <div class="row">
+        <div class="row container-prof">
             <?php $sec_4_prof = get_field('section_4_professionals'); ?>
             <?php if ($sec_4_prof) :
 
@@ -118,12 +118,18 @@ $sec_4_button = get_field('button_section_4', get_the_ID());
                 foreach ($sec_4_prof as $sp) {
                     $services_prof = get_field('services_prof', $sp->ID);
             ?>
-                    <div class="col-lg-4">
-                        <a href="<?= get_permalink($sp->ID); ?>">
+                    <div class="col-lg-4 prof-column">
+                        <a href="<?= get_permalink($sp->ID); ?>" class="container-link">
                             <div class="blocks-container">
-                                <img src="<?= get_the_post_thumbnail_url($sp->ID) ?>" alt="photo-prof">
-                                <div class="names"> <?= get_the_title($sp->ID) ?> </div>
-                                <?= $services_prof ?>
+
+                                <div class="cont">
+                                    <img src="<?= get_the_post_thumbnail_url($sp->ID) ?>" alt="photo-prof">
+                                    <div class="names"> <?= get_the_title($sp->ID) ?> </div>
+                                    <div class="info-p">
+                                        <?= $services_prof ?>
+                                    </div>
+                                </div>
+
                                 <div class="btn-wrapper">
                                     <span class="button btn-white">See Pro</span>
                                 </div>
@@ -131,6 +137,7 @@ $sec_4_button = get_field('button_section_4', get_the_ID());
                         </a>
 
                     </div>
+
                 <?php }
                 wp_reset_postdata(); ?>
             <?php endif; ?>
