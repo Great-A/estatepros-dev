@@ -158,7 +158,7 @@ jQuery(document).ready(function ($) {
 			}
 		});
 
-		$("#more_posts").attr("disabled", true); // Disable the button, temp.
+		$("#more-posts-btn-wrapp").attr("disabled", true); // Disable the button, temp.
 		
 
 	});
