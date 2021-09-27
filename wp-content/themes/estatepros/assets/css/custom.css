@@ -1,15 +1,24 @@
 /* Blog */
+@media (max-width: 991px) {
+  #blog {
+    padding: 50px 0 30px;
+  }
+}
+
 #blog h1 {
   margin-bottom: 40px;
 
+  color: #434343;
   font-size: 48px;
   line-height: 1.15;
   font-weight: 700;
 }
 
 @media (max-width: 991px) {
-  #blog {
-    padding: 50px 0 30px;
+  #blog h1 {
+    margin-bottom: 25px;
+
+    font-size: 36px;
   }
 }
 
@@ -19,14 +28,56 @@
   margin-bottom: 22px;
 }
 
-#blog .custom-author {
-  text-align: center;
+@media (max-width: 991px) {
+  #blog p {
+    font-size: 14px;
+    line-height: 19px;
+    margin-bottom: 15px;
+  }
+}
+
+@media (min-width: 992px) {
+  #blog .custom-author {
+    padding: 0 40px;
+  }
 }
 
 @media (max-width: 991px) {
   #blog .custom-author {
-    margin-bottom: 40px;
+    margin-top: 40px;
   }
+}
+
+#blog .custom-author__head {
+  margin-bottom: 10px;
+  font-size: 18px;
+  line-height: 40px;
+  text-align: center;
+  color: #434343;
+  font-weight: 700;
+}
+
+#blog .custom-author__related {
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 700;
+  text-align: center;
+}
+
+@media (max-width: 991px) {
+  #blog .custom-author__related {
+    font-size: 21px;
+    line-height: 27px;
+  }
+}
+
+
+#blog .custom-author__wrap {
+  padding: 30px;
+  margin-bottom: 50px;
+  border: 2px solid #F3F3F3;
+  border-radius: 20px;
+  text-align: center;
 }
 
 #blog .custom-author img {
@@ -43,8 +94,8 @@
   color: #434343;
 }
 
-#blog .custom-content__title {
-  color: #434343;
+#blog .custom-content > img {
+  margin-bottom: 30px;
 }
 
 #blog .custom-author__prof {
@@ -57,41 +108,125 @@
   margin-top: 80px;
 }
 
-#blog .custom-cart {
+#blog .custom-cart,
+#professionals .custom-cart {
   display: block;
-  padding: 15px;
+  padding: 25px;
   border-radius: 10px;
-  margin: 40px 20px;
+  margin: 20px 0 20px;
   border: 2px solid #f1f1f1;
-  text-align: left;
 }
 
 @media (max-width: 991px) {
-  #blog .custom-cart {
+  #blog .custom-cart,
+  #professionals .custom-cart {
     padding: 20px;
     margin: 20px 0;
   }
 }
 
-#blog .custom-cart:hover {
+#blog .custom-cart:hover,
+#professionals .custom-cart:hover {
   text-decoration: none;
 }
 
 
-#blog .custom-cart:hover .custom-cart__title {
+#blog .custom-cart:hover .custom-cart__title,
+#professionals .custom-cart:hover .custom-cart__title {
   color: #15A3C4;
 }
 
-#blog .custom-cart__title {
-  font-size: 21px;
-  line-height: 27px;
+#blog .custom-cart__title,
+#professionals .custom-cart__title {
+  font-size: 17px;
+  line-height: 22px;
   color: #434343;
   transition: 0.3s all ease;
 }
 
-#blog .custom-cart__description {
+#blog .custom-cart p,
+#professionals .custom-cart p {
+  font-size: 16px;
+  line-height: 22px;
+  margin-bottom: 0;
+}
+
+@media (max-width: 991px) {
+  #blog .custom-cart p,
+  #professionals .custom-cart p {
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 0;
+}
+}
+
+#blog .custom-cart__description,
+#professionals .custom-cart__description {
   margin-top: 15px;
 
   max-height: 66px;
   overflow: hidden;
+}
+
+@media (max-width: 991px) {
+  #blog .custom-cart__description,
+  #professionals .custom-cart__description {
+    max-height: 57px;
+  }
+}
+
+#professionals .professionals-posts {
+  margin-top: 80px;
+}
+
+@media (max-width: 991px) {
+  #professionals .professionals-posts {
+    margin-top: 40px;
+  }
+}
+
+.about-prof h1,
+.about-prof p {
+  text-align: center;
+}
+
+header .header-container .header-wrapper .logo-menu-wrapp,
+header .header-container .header-wrapper .logo-menu-wrapp .header-menu {
+  flex-grow: 1;
+}
+
+.menu-header-menu-container {
+  display: flex;
+  justify-content: center;
+}
+
+#menu-header-menu {
+  display: inline-flex;
+}
+
+header .header-container .header-wrapper .logo-menu-wrapp .header-menu ul li {
+  margin: 0 30px;
+}
+
+@media(max-width: 1201px) {
+  header .header-container .header-wrapper .logo-menu-wrapp .header-menu ul li {
+    margin: 0 18px;
+  }
+}
+
+#professionals .about-prof h1 {
+  padding-top: 0;
+}
+
+#professionals .about-prof p {
+  margin-top: 15px;
+}
+.professionals-posts > * {
+  box-sizing: border-box;
+}
+
+@media (max-width: 991px) {
+  #professionals .custom-cart {
+    margin: 10px 0;
+  }
 }

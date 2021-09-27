@@ -118,7 +118,7 @@ Template Name: Contact
         .contact-row-item .wpcf7-form .cf-input:hover,
         .contact-row-item .wpcf7-form .cf-input:active,
         .contact-row-item .wpcf7-form .cf-input:focus {
-            border: 1px solid #5A5A5A;
+            border: 1px solid #15A3C4;
         }
         
         @media (min-width: 1024px) {
