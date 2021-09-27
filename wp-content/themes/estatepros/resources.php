@@ -83,6 +83,11 @@ $resources_video_3 = get_field('resources_video_3', $ID);
     </div>
 </section>
 <style>
+
+    .disabled {
+
+    }
+    
     header .header-container {
         transition: all ease 500ms;
     }
