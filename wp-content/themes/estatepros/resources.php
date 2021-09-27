@@ -71,7 +71,7 @@ $resources_video_3 = get_field('resources_video_3', $ID);
                 ?>
             </div>
         </div>
-        <div id="more_posts"><a href="#" class="rr-load-more button btn-blue">Load More</a></div>
+        <div id="more_posts-wrapp"><a id="more_posts" href="#" class="rr-load-more button btn-blue">Load More</a></div>
 
 
         <div class="more-posts-show">
@@ -205,6 +205,7 @@ $resources_video_3 = get_field('resources_video_3', $ID);
     .more-posts-show  .article-item  {
         border-bottom: 3px solid #DFDFDF;
     }
+
 
     .rr-link-row {
         display: flex;

@@ -110,7 +110,7 @@ add_action('init', function () {
 function more_post_ajax()
 {
 
-	$ppp = (isset($_POST["ppp"])) ? $_POST["ppp"] : 5;
+	$ppp = (isset($_POST["ppp"])) ? $_POST["ppp"] : 3;
 	$page = (isset($_POST['pageNumber'])) ? $_POST['pageNumber'] : 0;
 
 
