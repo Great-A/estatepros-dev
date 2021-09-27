@@ -83,6 +83,7 @@ jQuery(document).ready(function ($) {
 
 	checkScreenSize();
 
+<<<<<<< HEAD
 	function checkScreenSize() {
 		var newWindowWidth = $(window).width();
 		if (newWindowWidth < 992) {
@@ -93,6 +94,29 @@ jQuery(document).ready(function ($) {
 			$(".header-menu").show();
 			$(".cross").hide();
 			$(".toggle").hide();
+=======
+checkScreenSize();
+
+function checkScreenSize() {
+	var newWindowWidth = $(window).width();
+	if (newWindowWidth < 992) {
+		$(".cross").hide();
+		$(".header-menu").hide();
+		$(".toggle").show();
+	} else {
+		$(".header-menu").show();
+		$(".cross").hide();
+		$(".toggle").hide();
+	}
+}
+jQuery(window).on('load', function() {
+
+	if (window.location.search) {
+		$('#menu-item-27 a').addClass('active');
+		var cat = window.location.search.split('=');
+		if (cat && cat[1] !== undefined) {
+			jQuery('.click-category[data-category-id=' + cat[1] + ']').trigger('click');
+>>>>>>> 2cfd0fde0722e13eefb264eba5a0597d8d0cc95e
 		}
 	}
 	jQuery(window).on('load', function () {
