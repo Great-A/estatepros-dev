@@ -59,7 +59,7 @@ $resources_video_3 = get_field('resources_video_3', $ID);
                 while ($posts->have_posts()) : $posts->the_post(); ?>
 
                     <div class="article-item">
-                        <h4 class="articles-title"><a href="<?= the_permalink() ?>" class="rr-post-link"><?= get_the_title() ?></a></h4>
+                        <h4 class="articles-title preload-posts"><a href="<?= the_permalink() ?>" class="rr-post-link"><?= get_the_title() ?></a></h4>
                         <?php $cats = get_the_category();
                         $cat_names = array_column($cats, 'name'); ?>
                         <p class="article-category"><?= implode(', ', $cat_names) ?></p>
@@ -71,23 +71,19 @@ $resources_video_3 = get_field('resources_video_3', $ID);
                 ?>
             </div>
         </div>
+        <div class="more-posts-show"></div>
         <div id="more_posts-wrapp"><a id="more_posts" href="#" class="rr-load-more button btn-blue">Load More</a></div>
 
+        <input id="postsCount" type="hidden" value="<?= wp_count_posts()->publish ?>">
 
-        <div class="more-posts-show">
-
-
-
-
-        </div>
     </div>
 </section>
 <style>
-
-    .disabled {
-
+    .disabled-btn {
+        pointer-events: none;
+        opacity: 0.3;
     }
-    
+
     header .header-container {
         transition: all ease 500ms;
     }
@@ -206,8 +202,7 @@ $resources_video_3 = get_field('resources_video_3', $ID);
         padding: 30px 0 20px 0;
     }
 
-    .article-item:not(:last-child),
-    .more-posts-show  .article-item  {
+    .article-item:not(:last-child) {
         border-bottom: 3px solid #DFDFDF;
     }
 
@@ -229,6 +224,30 @@ $resources_video_3 = get_field('resources_video_3', $ID);
         width: 100%;
     }
 
+
+
+    .bloks-post-more {
+        display: flex;
+    }
+
+    .bloks-post-more:nth-child(2n+1) {
+        border-right: 4px solid #fff;
+        padding-right: 70px;
+    }
+
+    .bloks-post-more .article-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        border-bottom: 3px solid #DFDFDF;
+        width: 100%;
+    }
+
+    .bloks-post-more:nth-child(2n) {
+        padding-left: 70px;
+    }
+
     @media (max-width: 1199px) {
         .resources-row {
             flex-direction: column;
@@ -244,6 +263,30 @@ $resources_video_3 = get_field('resources_video_3', $ID);
             max-width: 600px;
             margin-bottom: 40px;
         }
+
+        .article-item:last-child {
+            border-bottom: 3px solid #DFDFDF;
+        }
+
+        .more-posts-show {
+            padding-top: 0;
+        }
+        
+        .bloks-post-more,
+        .bloks-post-more:nth-child(2n+1) {
+            border-right: 0;
+            padding: 0;
+        }
+
+        .bloks-post-more .article-item {
+            margin: 0 12px;
+        }
+
+        .bloks-post-more:nth-child(2n) {
+        padding-left: 0
+    }
+
+
     }
 
     @media (max-width: 767px) {

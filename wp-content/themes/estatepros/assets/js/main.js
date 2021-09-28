@@ -142,23 +142,28 @@ jQuery(document).ready(function ($) {
 		e.preventDefault();
 		$.ajax({
 			url: my_ajax_object.ajax_url,
-			data: {
+			type: 'post',			
+			data: {				
 				action: "more_post_ajax",
-				offset: page * 2 //  page # x your default posts per page
+				offset: $('.preload-posts').length
+
 			},
 			success: function (data) {
-				// add the posts to the container and add to your page count
-				page++;
+				
 				$('.more-posts-show').append(data);
-
 			},
 			error: function (data) {
-				// test to see what you get back on error
 				console.log(data);
+			},
+			complete: function() {
+				var allPostsCount = $('#postsCount').val();
+				var	alreadyDisplayCount  = $('.preload-posts').length;
+				if (allPostsCount == alreadyDisplayCount) {
+					$("#more_posts").addClass("disabled-btn");
+				}
 			}
+			
 		});
-
-		$("#more_posts").attr("disabled", true); // Disable the button, temp.
 		
 
 	});

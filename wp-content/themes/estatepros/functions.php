@@ -108,17 +108,13 @@ add_action('init', function () {
 
 
 function more_post_ajax()
-{
-
-	$ppp = (isset($_POST["ppp"])) ? $_POST["ppp"] : 3;
-	$page = (isset($_POST['pageNumber'])) ? $_POST['pageNumber'] : 0;
-
-
+{ 
 	$args = array(
 		'suppress_filters' => true,
 		'post_type' => 'post',
-		'posts_per_page' => $ppp,
-		'paged'    => $page,
+		'order' => 'ASC',
+		'posts_per_page' => 6,
+		'offset' => $_POST['offset']
 	);
 
 	$post = new WP_Query($args); ?>
@@ -126,7 +122,7 @@ function more_post_ajax()
 		<?php while ($post->have_posts()) {
 			$post->the_post(); ?>
 
-			<div class="col-md-6">
+			<div class="col-xl-6 bloks-post-more preload-posts">
 				<div class="article-item">
 					<h4 class="articles-title"><a href="<?= the_permalink() ?>" class="rr-post-link"><?= get_the_title() ?></a></h4>
 					<?php $cats = get_the_category();
@@ -135,14 +131,11 @@ function more_post_ajax()
 				</div>
 
 			</div>
-
-
-
 		<?php  }
 
 		wp_reset_postdata();
 
-		die(); // use die instead of exit 
+		die();
 		?>
 	</div>
 <?php }
