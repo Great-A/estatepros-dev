@@ -232,6 +232,7 @@ header {
     background-position: center;
     background-repeat: no-repeat;
 
+
     .title-container {
         color: @--white;
         font-size: 24px;
@@ -610,6 +611,7 @@ header {
         padding: 400px 0 50px 0;
         min-height: 500px;
         background-position: inherit;
+        background-size: cover;
 
         h1 {
             font-size: 80px;
@@ -648,6 +650,54 @@ header {
 
         .img-wrapper {
             position: relative;
+        }
+
+        .filter-container-prof {
+            display: flex;
+
+            .filter-prof {
+                min-width: 35%;
+                flex-direction: column;
+
+                h3 {
+                    color: @--blue;
+                    padding-bottom: 20px;
+                }
+
+                h4 {
+                    padding-bottom: 10px;
+                }
+            }
+
+            .form-control {
+                border: 2px solid #F3F3F3;
+                border-radius: 10px;
+                padding: 10px;
+                min-width: 250px;
+                font-family: "Montserrat";
+                font-weight: 600;
+                margin-bottom: 20px;
+                &:focus-visible {
+                    outline: 0; 
+                }
+            }
+
+            .form-control:after{
+                width: 0; 
+                height: 0; 
+                border-left: 6px solid transparent;
+                border-right: 6px solid transparent;
+                border-top: 6px solid #f00;
+                position: absolute;
+                top: 40%;
+                right: 5px;
+                content: "";
+                z-index: 98;
+               }
+        }
+
+        .prof-box {
+            min-width: 65%;
         }
 
         .feedback-container {
