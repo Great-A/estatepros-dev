@@ -110,20 +110,26 @@ add_action('init', function () {
 
 
 function more_post_ajax()
+<<<<<<< HEAD
 {
 
 	$ppp = (isset($_POST["ppp"])) ? $_POST["ppp"] : 20;
 	$page = (isset($_POST['pageNumber'])) ? $_POST['pageNumber'] : 0;
 
+=======
+{ 
+>>>>>>> be0665372182f4d0da795a089392b302fefb8bb3
 	$args = array(
 		'suppress_filters' => true,
 		'post_type' => 'post',
-		'posts_per_page' => $ppp,
-		'paged'    => $page,
+		'order' => 'ASC',
+		'posts_per_page' => 6,
+		'offset' => $_POST['offset']
 	);
 
 	$post = new WP_Query($args); ?>
 	<div class="row">
+<<<<<<< HEAD
 		<?php if ($post->have_posts($ppp)) :  while ($post->have_posts()) : $post->the_post(); ?>
 
 				<div class="col-md-6 col-load-more">
@@ -137,6 +143,21 @@ function more_post_ajax()
 				</div>
 
 
+=======
+		<?php while ($post->have_posts()) {
+			$post->the_post(); ?>
+
+			<div class="col-xl-6 bloks-post-more preload-posts">
+				<div class="article-item">
+					<h4 class="articles-title"><a href="<?= the_permalink() ?>" class="rr-post-link"><?= get_the_title() ?></a></h4>
+					<?php $cats = get_the_category();
+					$cat_names = array_column($cats, 'name'); ?>
+					<p class="article-category"><?= implode(', ', $cat_names) ?></p>
+				</div>
+
+			</div>
+		<?php  }
+>>>>>>> be0665372182f4d0da795a089392b302fefb8bb3
 
 	<?php endwhile;
 		endif;
@@ -150,4 +171,11 @@ function more_post_ajax()
 	
 	?>
 
+<<<<<<< HEAD
+=======
+		die();
+		?>
+	</div>
+<?php }
+>>>>>>> be0665372182f4d0da795a089392b302fefb8bb3
 
