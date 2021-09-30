@@ -13,41 +13,62 @@ jQuery(document).ready(function ($) {
 	});
 
 
-
-	$(".click-category").click(function (e) {
-
-
-		$('.click-category.active').removeClass('active');
-		$(this).addClass('active');
-
-
+	$(document).on("change", "#location-filter", function (e) {
 		e.preventDefault();
-		var currentCategoryId = parseInt($(this).data('category-id')),
-			professional = $('.prof-box > div.col-lg-4'),
-			found = 0;
-		professional.hide();
-		for (var i in professional) {
-			var item = professional[i];
-			if (item.nodeName === 'DIV') {
-				var jqItem = $(item),
-					cats = jqItem.data('post-category-id').toString(),
-					catsList = cats.split(',');
-				for (var j in catsList) {
-					if (parseInt(catsList[j]) === currentCategoryId) {
-						jqItem.show();
-					}
-				}
-				if (jqItem.is(':visible')) {
-					found++;
-				}
-			}
-		}
-		$('.nobody-found').remove();
-		if (found === 0) {
-			$('.row.prof-box').append('<div class="nobody-found">Nobody found</div>');
-		}
+		var currentCategoryId = parseInt($('#filter-category').val()),
+			currenLocation = $(this).val();
+
+		professionalFilter(currentCategoryId, currenLocation);
 	});
 
+
+	$('#filter-category').change(function (e) {
+
+		e.preventDefault();
+		var currentCategoryId = parseInt($(this).val()),
+			currenLocation = $('#location-filter').val();
+
+		professionalFilter(currentCategoryId, currenLocation);
+	});
+
+
+	function professionalFilter(categoryID, location) {
+
+		var currentCategoryId = categoryID,
+			currenLocation = location,
+			professional = $('.professional'),
+			found = 0;
+
+		console.log(currentCategoryId);
+		if (currentCategoryId != 0) {
+
+			professional.hide();
+			for (var i in professional) {
+				var item = professional[i];
+				if (item.nodeName === 'DIV') {
+					var jqItem = $(item),
+						cats = jqItem.data('post-category-id').toString(),
+						catsList = cats.split(','),
+						itemLocation = jqItem.data('location').toString();
+					for (var j in catsList) {
+						if (parseInt(catsList[j]) === currentCategoryId  && (currenLocation === itemLocation || (!currenLocation))) {
+							jqItem.show();
+						}
+					}
+					if (jqItem.is(':visible')) {
+						found++;
+					}
+				}
+			}
+		} else if(location){
+
+			professional.hide();
+
+			$(".professional[data-location=" + currenLocation + "]").show();
+		} else {
+			professional.show();
+		}
+	}
 
 
 	$(function () {
@@ -142,29 +163,29 @@ jQuery(document).ready(function ($) {
 		e.preventDefault();
 		$.ajax({
 			url: my_ajax_object.ajax_url,
-			type: 'post',			
-			data: {				
+			type: 'post',
+			data: {
 				action: "more_post_ajax",
 				offset: $('.preload-posts').length
 
 			},
 			success: function (data) {
-				
+
 				$('.more-posts-show').append(data);
 			},
 			error: function (data) {
 				console.log(data);
 			},
-			complete: function() {
+			complete: function () {
 				var allPostsCount = $('#postsCount').val();
-				var	alreadyDisplayCount  = $('.preload-posts').length;
+				var alreadyDisplayCount = $('.preload-posts').length;
 				if (allPostsCount == alreadyDisplayCount) {
 					$("#more_posts").addClass("disabled-btn");
 				}
 			}
-			
+
 		});
-		
+
 
 	});
 });
