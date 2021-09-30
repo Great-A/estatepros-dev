@@ -110,15 +110,11 @@ add_action('init', function () {
 
 
 function more_post_ajax()
-<<<<<<< HEAD
-{
 
 	$ppp = (isset($_POST["ppp"])) ? $_POST["ppp"] : 20;
 	$page = (isset($_POST['pageNumber'])) ? $_POST['pageNumber'] : 0;
 
-=======
-{ 
->>>>>>> be0665372182f4d0da795a089392b302fefb8bb3
+
 	$args = array(
 		'suppress_filters' => true,
 		'post_type' => 'post',
@@ -129,7 +125,7 @@ function more_post_ajax()
 
 	$post = new WP_Query($args); ?>
 	<div class="row">
-<<<<<<< HEAD
+
 		<?php if ($post->have_posts($ppp)) :  while ($post->have_posts()) : $post->the_post(); ?>
 
 				<div class="col-md-6 col-load-more">
@@ -143,7 +139,7 @@ function more_post_ajax()
 				</div>
 
 
-=======
+
 		<?php while ($post->have_posts()) {
 			$post->the_post(); ?>
 
@@ -157,7 +153,7 @@ function more_post_ajax()
 
 			</div>
 		<?php  }
->>>>>>> be0665372182f4d0da795a089392b302fefb8bb3
+
 
 	<?php endwhile;
 		endif;
@@ -171,11 +167,10 @@ function more_post_ajax()
 	
 	?>
 
-<<<<<<< HEAD
-=======
+
 		die();
 		?>
 	</div>
 <?php }
->>>>>>> be0665372182f4d0da795a089392b302fefb8bb3
+
 
