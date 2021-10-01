@@ -198,7 +198,7 @@ header {
     
     .header-bg-scroll {
         background-color: @--grey-4;
-        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1) !important;
         padding: 10px 0 !important;
         z-index: 999;
     }
@@ -620,7 +620,6 @@ header {
 
 
     .top-banner-wrapper {
-
         padding: 400px 0 50px 0;
         min-height: 500px;
         background-position: inherit;
@@ -729,8 +728,14 @@ header {
     }
 
     .blocks-container {
-        margin: 20px 0;
+        margin-bottom: 20px;
+        padding: 60px 0 50px;
+    }
+
+    .professional {
         width: 275px;
+        margin: 0 10px;
+        padding: 0;
     }
 
 
@@ -783,6 +788,7 @@ form.wpcf7-form {
 
 #professionals {
     padding: 30px 0 70px;
+    margin: 0px 10px;
 
     .content-prof-wrapp {
         padding-top: 50px;

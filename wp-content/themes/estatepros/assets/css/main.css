@@ -147,7 +147,7 @@ header .header-container .header-wrapper .button-wrapper-header {
 }
 header .header-bg-scroll {
   background-color: #F3F3F3;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1) !important;
   padding: 10px 0 !important;
   z-index: 999;
 }
@@ -587,8 +587,13 @@ header .cross {
   line-height: 43px;
 }
 #directory .blocks-container {
-  margin: 20px 0;
+  margin-bottom: 20px;
+  padding: 60px 0 50px;
+}
+#directory .professional {
   width: 275px;
+  margin: 0 10px;
+  padding: 0;
 }
 .wpcf7-form p {
   width: 100%;
@@ -628,6 +633,7 @@ form.wpcf7-form {
 }
 #professionals {
   padding: 30px 0 70px;
+  margin: 0px 10px;
 }
 #professionals .content-prof-wrapp {
   padding-top: 50px;
