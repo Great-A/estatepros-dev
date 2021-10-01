@@ -22,29 +22,32 @@ $subtitle_2_directory = get_field('subtitle_2_directory', get_the_ID());
 
             <div class="filter-container-prof">
                 <div class="row filter-prof">
-                    <h3>Filter by</h3>
-                    <div class="filter-wrapper">
+
+                    <div class="filter-main-wrapper">
+                        <h3>Filter by</h3>
+                        <div class="filter-wrapper">
+                        </div>
                         <h4>Location</h4>
                         <div class="prof-location">
-                        <select id="location-filter" class="form-control">
-                        <option value="" >Show all</option>
-                            <?php 
-                           $location_prof = acf_get_field('location_prof');
-                           
-                           foreach ( $location_prof['choices'] as $value => $label){                                                       
-                            ?>                            
-                                <option value="<?= $value ?>"><?= $label?></option>
-                            <?php
-                            }
-                            ?>
-                        </select>
+                            <select id="location-filter" class="form-control">
+                                <option value="">Show all</option>
+                                <?php
+                                $location_prof = acf_get_field('location_prof');
+
+                                foreach ($location_prof['choices'] as $value => $label) {
+                                ?>
+                                    <option value="<?= $value ?>"><?= $label ?></option>
+                                <?php
+                                }
+                                ?>
+                            </select>
                         </div>
 
                         <h4>Category</h4>
 
                         <div class="prof-category">
                             <select name="filter-category" id="filter-category" class="form-control">
-                                <option value="0" >Show all</option>
+                                <option value="0">Show all</option>
                                 <?php
                                 $args = array(
                                     'post_type' => 'professionals',
@@ -87,7 +90,7 @@ $subtitle_2_directory = get_field('subtitle_2_directory', get_the_ID());
                                 array_push($category_ids_arr, $cat->term_id);
                             } ?>
 
-                            <div class="col-lg-4 professional" data-post-category-id="<?= join(',', $category_ids_arr) ?>" data-location ="<?= get_field ('location_prof', get_the_ID()) ?>">
+                            <div class="col-lg-4 professional" data-post-category-id="<?= join(',', $category_ids_arr) ?>" data-location="<?= get_field('location_prof', get_the_ID()) ?>">
 
                                 <div class="blocks-container">
                                     <a href="<?= get_permalink(get_option('page_for_posts')); ?>">

@@ -11,9 +11,7 @@ function mythem_enqueue_style_scripts()
 	wp_localize_script(
 		'js',
 		'my_ajax_object',
-		array(
-			'ajax_url' => admin_url('admin-ajax.php')
-		)
+		array('ajax_url' => admin_url('admin-ajax.php'))
 	);
 	wp_enqueue_style('slickcss', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css', '1.6.0', 'all');
 	wp_enqueue_script('slider', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.js');
@@ -110,11 +108,7 @@ add_action('init', function () {
 
 
 function more_post_ajax()
-
-	$ppp = (isset($_POST["ppp"])) ? $_POST["ppp"] : 20;
-	$page = (isset($_POST['pageNumber'])) ? $_POST['pageNumber'] : 0;
-
-
+{ 
 	$args = array(
 		'suppress_filters' => true,
 		'post_type' => 'post',
@@ -125,21 +119,6 @@ function more_post_ajax()
 
 	$post = new WP_Query($args); ?>
 	<div class="row">
-
-		<?php if ($post->have_posts($ppp)) :  while ($post->have_posts()) : $post->the_post(); ?>
-
-				<div class="col-md-6 col-load-more">
-					<div class="article-item">
-						<h4 class="articles-title"><a href="<?= the_permalink() ?>" class="rr-post-link"><?= get_the_title() ?></a></h4>
-						<?php $cats = get_the_category();
-						$cat_names = array_column($cats, 'name'); ?>
-						<p class="article-category"><?= implode(', ', $cat_names) ?></p>
-					</div>
-
-				</div>
-
-
-
 		<?php while ($post->have_posts()) {
 			$post->the_post(); ?>
 
@@ -154,23 +133,12 @@ function more_post_ajax()
 			</div>
 		<?php  }
 
-
-	<?php endwhile;
-		endif;
 		wp_reset_postdata();
-		die();
-	}
-
-	add_action('wp_ajax_nopriv_more_post_ajax', 'more_post_ajax');
-	add_action('wp_ajax_more_post_ajax', 'more_post_ajax'); 
-	
-	
-	?>
-
 
 		die();
 		?>
 	</div>
 <?php }
 
-
+add_action('wp_ajax_nopriv_more_post_ajax', 'more_post_ajax');
+add_action('wp_ajax_more_post_ajax', 'more_post_ajax');

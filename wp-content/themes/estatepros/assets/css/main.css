@@ -35,7 +35,9 @@ body {
 }
 body #page {
   position: relative;
-  overflow: hidden;
+}
+#directory #page {
+  overflow: visible !important;
 }
 .button {
   border-radius: 50px;
@@ -342,7 +344,7 @@ header .cross {
   cursor: pointer;
   background-color: #FFFFFF;
   text-align: center;
-  width: 100%;
+  width: 275px;
 }
 #section-4 .blocks-container:hover .btn-white,
 #archive-professionals .blocks-container:hover .btn-white,
@@ -491,6 +493,9 @@ header .cross {
 #content #section-2 .slick-slide.slick-current.slick-active > div:nth-child(2) .blocks-container {
   margin-bottom: 0;
 }
+#directory {
+  overflow: visible !important;
+}
 #directory .top-banner-wrapper {
   padding: 400px 0 50px 0;
   min-height: 500px;
@@ -530,8 +535,13 @@ header .cross {
   display: flex;
 }
 #directory .content-directory .filter-container-prof .filter-prof {
-  min-width: 35%;
+  position: sticky;
+  min-width: 26%;
   flex-direction: column;
+}
+#directory .content-directory .filter-container-prof .filter-prof .filter-main-wrapper {
+  position: sticky;
+  top: 130px;
 }
 #directory .content-directory .filter-container-prof .filter-prof h3 {
   color: #15A3C4;
@@ -541,31 +551,28 @@ header .cross {
   padding-bottom: 10px;
 }
 #directory .content-directory .filter-container-prof .form-control {
+  cursor: pointer;
   border: 2px solid #F3F3F3;
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 10px;
   min-width: 250px;
   font-family: "Montserrat";
   font-weight: 600;
   margin-bottom: 20px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  outline-width: 0;
+  background-image: url("../img/icons8-expand-arrow-20.png");
+  background-repeat: no-repeat;
+  background-position-x: 97%;
+  background-position-y: 5px;
 }
 #directory .content-directory .filter-container-prof .form-control:focus-visible {
   outline: 0;
 }
-#directory .content-directory .filter-container-prof .form-control:after {
-  width: 0;
-  height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 6px solid #f00;
-  position: absolute;
-  top: 40%;
-  right: 5px;
-  content: "";
-  z-index: 98;
-}
 #directory .content-directory .prof-box {
-  min-width: 65%;
+  min-width: 74%;
 }
 #directory .content-directory .feedback-container {
   padding-top: 80px;
@@ -663,4 +670,17 @@ form.wpcf7-form {
 .wpcf7-form.init button {
   margin-top: 15px;
   font-size: inherit;
+}
+#sticky {
+  position: sticky;
+  position: -webkit-sticky;
+  background: #f83d23;
+  width: 100px;
+  height: 100px;
+  top: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 6px #000;
+  color: #fff;
 }
