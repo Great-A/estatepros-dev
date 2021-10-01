@@ -57,11 +57,6 @@ body {
 
 }
 
-#directory {
-    #page {
-        overflow: visible !important;
-    }
-}
 
 
 .button {
@@ -164,6 +159,7 @@ header {
         width: 100%;
         z-index: 2;
         transition: all 250ms linear;
+        top: 0;
 
         .header-wrapper {
             display: flex;
@@ -199,7 +195,13 @@ header {
             }
         }
     }
-
+    
+    .header-bg-scroll {
+        background-color: @--grey-4;
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+        padding: 10px 0 !important;
+        z-index: 999;
+    }
 
     .toggle {
         display: none;
@@ -437,7 +439,7 @@ header {
         cursor: pointer;
         background-color: @--white;
         text-align: center;
-        width: 275px;
+        width: 100%;
 
         &:hover {
             .btn-white {
@@ -728,6 +730,7 @@ header {
 
     .blocks-container {
         margin: 20px 0;
+        width: 275px;
     }
 
 

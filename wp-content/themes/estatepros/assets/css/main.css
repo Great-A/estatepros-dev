@@ -36,9 +36,6 @@ body {
 body #page {
   position: relative;
 }
-#directory #page {
-  overflow: visible !important;
-}
 .button {
   border-radius: 50px;
   font-weight: 600;
@@ -119,6 +116,7 @@ header .header-container {
   width: 100%;
   z-index: 2;
   transition: all 250ms linear;
+  top: 0;
 }
 header .header-container .header-wrapper {
   display: flex;
@@ -146,6 +144,12 @@ header .header-container .header-wrapper .logo-menu-wrapp .header-menu ul li {
 }
 header .header-container .header-wrapper .button-wrapper-header {
   margin: auto 0;
+}
+header .header-bg-scroll {
+  background-color: #F3F3F3;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px 0 !important;
+  z-index: 999;
 }
 header .toggle {
   display: none;
@@ -344,7 +348,7 @@ header .cross {
   cursor: pointer;
   background-color: #FFFFFF;
   text-align: center;
-  width: 275px;
+  width: 100%;
 }
 #section-4 .blocks-container:hover .btn-white,
 #archive-professionals .blocks-container:hover .btn-white,
@@ -584,6 +588,7 @@ header .cross {
 }
 #directory .blocks-container {
   margin: 20px 0;
+  width: 275px;
 }
 .wpcf7-form p {
   width: 100%;

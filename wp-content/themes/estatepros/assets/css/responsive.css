@@ -1,11 +1,3 @@
-@media (min-width: 991px) {
-  header .header-bg-scroll {
-    background-color: #F3F3F3;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
-    padding: 10px 0 !important;
-    z-index: 999;
-  }
-}
 @media (min-width: 1510px) {
   #section-1 .img-wrapper img {
     max-width: unset;

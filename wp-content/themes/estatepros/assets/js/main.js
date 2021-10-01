@@ -17,7 +17,7 @@ jQuery(document).ready(function ($) {
 		e.preventDefault();
 		var currentCategoryId = parseInt($('#filter-category').val()),
 			currenLocation = $(this).val();
-
+        $('.nobody-found').remove();
 		professionalFilter(currentCategoryId, currenLocation);
 	});
 
@@ -25,7 +25,7 @@ jQuery(document).ready(function ($) {
 		e.preventDefault();
 		var currentCategoryId = parseInt($(this).val()),
 			currenLocation = $('#location-filter').val();
-
+        $('.nobody-found').remove();
 		professionalFilter(currentCategoryId, currenLocation);
 	});
 
@@ -63,12 +63,21 @@ jQuery(document).ready(function ($) {
 			}
 		} else if (location) {
 			$('.nobody-found').remove();
+			professional.hide();
+			var prof_locations = $(".professional[data-location=" + currenLocation + "]");
+			prof_locations.show();
+			for (var j in prof_locations) {
+				var item = prof_locations[j];
+				if (item.nodeName === 'DIV') {
+					var jqItem = $(item);
+					if (jqItem.is(':visible')) {
+						found++;
+					}
+				}
+			}
 			if (found === 0) {
 				$('.row.prof-box').append('<div class="nobody-found">Nobody found</div>');
 			}
-			professional.hide();
-
-			$(".professional[data-location=" + currenLocation + "]").show();
 		} else {
 			$('.nobody-found').remove();
 			professional.show();
