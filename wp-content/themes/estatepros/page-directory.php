@@ -37,14 +37,18 @@ $subtitle_2_directory = get_field('subtitle_2_directory', get_the_ID());
                                 foreach ($location_prof['choices'] as $value => $label) {
                                 ?>
                                     <option value="<?= $value ?>"><?= $label ?></option>
+
+                                    
                                 <?php
                                 }
                                 ?>
+                                         
                             </select>
+
+                   
                         </div>
 
                         <h4>Category</h4>
-
                         <div class="prof-category">
                             <select name="filter-category" id="filter-category" class="form-control">
                                 <option value="0">Show all</option>
