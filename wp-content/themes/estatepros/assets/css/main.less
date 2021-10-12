@@ -620,6 +620,8 @@ header {
 
 
     .top-banner-wrapper {
+        background:linear-gradient(
+            180deg, rgba(102, 102, 102, 0.53) 0%, rgba(102, 102, 102, 0.53) 100%);
         padding: 400px 0 50px 0;
         min-height: 500px;
         background-position: inherit;
@@ -641,13 +643,13 @@ header {
 
         .prof-category {
             ul {
-                display: flex;
-                justify-content: center;
-                flex-wrap: wrap;
+                // display: flex;
+                // justify-content: center;
+                // flex-wrap: wrap;
                 margin-bottom: 50px;
 
                 li {
-                    margin: 15px 30px;
+                    // margin: 15px 30px;
                 }
             }
 
@@ -688,11 +690,10 @@ header {
             }
 
             .form-control {
-                cursor: pointer;
                 border: 2px solid #F3F3F3;
                 border-radius: 5px;
                 padding: 10px;
-                min-width: 250px;
+                width: 215px;
                 font-family: "Montserrat";
                 font-weight: 600;
                 margin-bottom: 20px;
@@ -700,10 +701,16 @@ header {
                 -webkit-appearance: none;
                 appearance: none;
                 outline-width: 0;
-                background-image: url("../img/icons8-expand-arrow-20.png");
-                background-repeat: no-repeat;
-                background-position-x: 97%;
-                background-position-y: 5px;
+                // background-image: url("../img/icons8-expand-arrow-20.png");
+                // background-repeat: no-repeat;
+                // background-position-x: 97%;
+                // background-position-y: 5px;
+                input {
+                    cursor: pointer;
+                }
+                li{
+                    padding-bottom: 5px;
+                }
 
                 &:focus-visible {
                     outline: 0;

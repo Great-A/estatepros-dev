@@ -29,6 +29,23 @@ $subtitle_2_directory = get_field('subtitle_2_directory', get_the_ID());
                         </div>
                         <h4>Location</h4>
                         <div class="prof-location">
+
+                            <!-- <option value="">Show all</option> -->
+                            <ul id="location-filter" class="form-control">
+                                <?php
+                                $location_prof = acf_get_field('location_prof');
+
+                                foreach ($location_prof['choices'] as $value => $label) {
+                                ?>
+                                    <li><input type="checkbox" id="<?= $label ?>" name="<?= $label ?>" value="<?= $value ?>" class="checkItemLocation">
+                                        <label for="<?= $label ?>"><?= $label ?></label>
+                                    </li>
+                                <?php
+                                }
+                                ?>
+                            </ul>
+
+                            <!-- 
                             <select id="location-filter" class="form-control">
                                 <option value="">Show all</option>
                                 <?php
@@ -36,20 +53,50 @@ $subtitle_2_directory = get_field('subtitle_2_directory', get_the_ID());
 
                                 foreach ($location_prof['choices'] as $value => $label) {
                                 ?>
-                                    <option value="<?= $value ?>"><?= $label ?></option>
+                                   <option value="<?= $value ?>"><?= $label ?></option>
 
-                                    
+                                    <input type="checkbox" id="<?= $label ?>" name="<?= $label ?>" value="<?= $value ?>">
+                                    <label for="<?= $label ?>"><?= $label ?></label>
                                 <?php
                                 }
                                 ?>
-                                         
-                            </select>
 
-                   
+                            </select> -->
+
+
                         </div>
 
                         <h4>Category</h4>
                         <div class="prof-category">
+                            <ul name="filter-category" id="filter-category" class="form-control">
+                                <!-- <option value="0">Show all</option> -->
+                                <?php
+                                $args = array(
+                                    'post_type' => 'professionals',
+                                    'orderby'    => 'ID',
+                                    'post_status' => 'publish',
+                                    'taxonomy' => 'category_prof',
+                                    'hide_empty' => 0,
+                                    'posts_per_page' => -1
+                                );
+                                $categories_prof = get_categories($args);
+
+                                foreach ($categories_prof as $cp) {
+                                ?>
+
+                                    <li>
+                                        <input type="checkbox" id="<?= $cp->name ?>" name="<?= $cp->name ?>" value="<?= $cp->term_id ?>" class="checkItemCategories">
+                                        <label for="<?= $cp->name ?>"><?= $cp->name ?></label>
+                                    </li>
+                                <?php
+                                }
+                                ?>
+
+                            </ul>
+                        </div>
+
+
+                        <!-- <div class="prof-category">
                             <select name="filter-category" id="filter-category" class="form-control">
                                 <option value="0">Show all</option>
                                 <?php
@@ -68,13 +115,15 @@ $subtitle_2_directory = get_field('subtitle_2_directory', get_the_ID());
                                     <option value="<?= $cp->term_id ?>">
                                         <?php echo $cp->name; ?>
                                     </option>
-
+                                    <li><input type="checkbox" id="<?= $label ?>" name="<?= $label ?>" value="<?= $cp->term_id ?>">
+                                    <label for="<?= $cp->name ?>"><?= $cp->name ?></label> </li>
                                 <?php
                                 }
                                 ?>
 
                             </select>
-                        </div>
+                        </div> -->
+
 
                     </div>
                 </div>

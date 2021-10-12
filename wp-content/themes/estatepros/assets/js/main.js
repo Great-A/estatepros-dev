@@ -13,20 +13,27 @@ jQuery(document).ready(function ($) {
 	});
 
 
-	$(document).on("change", "#location-filter", function (e) {
-		e.preventDefault();
-		var currentCategoryId = parseInt($('#filter-category').val()),
-			currenLocation = $(this).val();
-        $('.nobody-found').remove();
-		professionalFilter(currentCategoryId, currenLocation);
+	// $(document).on("change", "#location-filter", function (e) {
+	// 	e.preventDefault();
+	// 	var currentCategoryId = parseInt($('#filter-category').val()),
+	// 		currenLocation = $(this).val();
+	//     $('.nobody-found').remove();
+	// 	professionalFilter(currentCategoryId, currenLocation);
+	// });
+
+	$(document).on("change", ".checkItemLocation", function (e) {
+
+		professionalFilter(0, 0);
+
 	});
 
-	$(document).on("change", "#filter-category", function (e) {
-		e.preventDefault();
-		var currentCategoryId = parseInt($(this).val()),
-			currenLocation = $('#location-filter').val();
-        $('.nobody-found').remove();
-		professionalFilter(currentCategoryId, currenLocation);
+	$(document).on("change", ".checkItemCategories", function (e) {
+		// e.preventDefault();
+		// var currentCategoryId = parseInt($(this).val()),
+		// 	currenLocation = $('#location-filter').val();
+		// $('.nobody-found').remove();
+		// professionalFilter(currentCategoryId, currenLocation);
+		professionalFilter(0, 0);
 	});
 
 
@@ -35,56 +42,92 @@ jQuery(document).ready(function ($) {
 		var currentCategoryId = categoryID,
 			currenLocation = location,
 			professional = $('.professional'),
-			found = 0;
+			found = 0,
+			checkedLocation = $('.checkItemLocation:checked');
+		checkedCategories = $('.checkItemCategories:checked');
 
-		if (currentCategoryId != 0) {
-
-			professional.hide();
-			for (var i in professional) {
-				var item = professional[i];
-				if (item.nodeName === 'DIV') {
-					var jqItem = $(item),
-						cats = jqItem.data('post-category-id').toString(),
-						catsList = cats.split(','),
-						itemLocation = jqItem.data('location').toString();
-					for (var j in catsList) {
-						if (parseInt(catsList[j]) === currentCategoryId && (currenLocation === itemLocation || (!currenLocation))) {
-							jqItem.show();
-						}
-					}
-					if (jqItem.is(':visible')) {
-						found++;
-					}
-					$('.nobody-found').remove();
-					if (found === 0) {
-						$('.row.prof-box').append('<div class="nobody-found">Nobody found</div>');
-					}
-				}
-			}
-		} else if (location) {
-			$('.nobody-found').remove();
-			professional.hide();
-			var prof_locations = $(".professional[data-location=" + currenLocation + "]");
+		professional.hide();
+		for (var i in checkedLocation) {
+			var itemLocation = checkedLocation[i];
+			var itemLocationVal = itemLocation.value;
+			var prof_locations = $(".professional[data-location=" + itemLocationVal + "]");
 			prof_locations.show();
-			for (var j in prof_locations) {
-				var item = prof_locations[j];
-				if (item.nodeName === 'DIV') {
-					var jqItem = $(item);
-					if (jqItem.is(':visible')) {
-						found++;
-					}
+		}
+
+		for (var j in checkedCategories) {
+			var itemCategories = checkedCategories[j];
+			var itemCategoriesVal = itemCategories.value;
+
+			for (var i in professional) {
+				var itemProfessional = professional[i],
+				jqItem = $(itemProfessional),
+				cats = jqItem.data('post-category-id').toString(),
+				catsList = cats.split(',');
+				if ($.inArray( itemCategoriesVal, catsList )!= -1) {
+					jqItem.show();
 				}
 			}
-			if (found === 0) {
-				$('.row.prof-box').append('<div class="nobody-found">Nobody found</div>');
-			}
-		} else {
-			$('.nobody-found').remove();
+		
+
+
+
+			// var prof_locations = $(".professional[post-category-id=" + itemCategoriesVal + "]");
+			// prof_locations.show();
+		}
+
+		if (checkedLocation.length == 0) {
+			professional.show();
+		}
+
+		if (checkedCategories.length == 0) {
 			professional.show();
 		}
 
 
+		// if (currentCategoryId != 0) {
 
+		// 	for (var i in professional) {
+		// 		var item = professional[i];
+		// 		if (item.nodeName === 'DIV') {
+		// 			var jqItem = $(item),
+		// 				cats = jqItem.data('post-category-id').toString(),
+		// 				catsList = cats.split(','),
+		// 				itemLocation = jqItem.data('location').toString();
+		// 			for (var j in catsList) {
+		// 				if (parseInt(catsList[j]) === currentCategoryId && (currenLocation === itemLocation || (!currenLocation))) {
+		// 					jqItem.show();
+		// 				}
+		// 			}
+		// 			if (jqItem.is(':visible')) {
+		// 				found++;
+		// 			}
+		// 			$('.nobody-found').remove();
+		// 			if (found === 0) {
+		// 				$('.row.prof-box').append('<div class="nobody-found">Nobody found</div>');
+		// 			}
+		// 		}
+		// 	}
+		// } else if (location) {
+		// 	$('.nobody-found').remove();
+		// 	professional.hide();
+		// 	var prof_locations = $(".professional[data-location=" + currenLocation + "]");
+		// 	prof_locations.show();
+		// 	for (var j in prof_locations) {
+		// 		var item = prof_locations[j];
+		// 		if (item.nodeName === 'DIV') {
+		// 			var jqItem = $(item);
+		// 			if (jqItem.is(':visible')) {
+		// 				found++;
+		// 			}
+		// 		}
+		// 	}
+		// 	if (found === 0) {
+		// 		$('.row.prof-box').append('<div class="nobody-found">Nobody found</div>');
+		// 	}
+		// } else {
+		// 	$('.nobody-found').remove();
+		// 	professional.show();
+		// }
 	}
 
 
@@ -153,26 +196,26 @@ jQuery(document).ready(function ($) {
 		prevArrow: $('.prev'),
 		nextArrow: $('.next'),
 		responsive: [{
-				breakpoint: 1201,
-				settings: {
-					slidesPerRow: 2,
-					rows: 2
-				}
-			},
-			{
-				breakpoint: 768,
-				settings: {
-					slidesPerRow: 1,
-					rows: 2
-				}
-			},
-			{
-				breakpoint: 480,
-				settings: {
-					slidesPerRow: 1,
-					rows: 1
-				}
+			breakpoint: 1201,
+			settings: {
+				slidesPerRow: 2,
+				rows: 2
 			}
+		},
+		{
+			breakpoint: 768,
+			settings: {
+				slidesPerRow: 1,
+				rows: 2
+			}
+		},
+		{
+			breakpoint: 480,
+			settings: {
+				slidesPerRow: 1,
+				rows: 1
+			}
+		}
 		]
 	});
 
