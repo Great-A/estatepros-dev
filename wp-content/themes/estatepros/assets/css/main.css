@@ -551,7 +551,7 @@ header .cross {
 }
 #directory .content-directory .filter-container-prof .form-control {
   border: 2px solid #F3F3F3;
-  border-radius: 5px;
+  border-radius: 20px;
   padding: 10px;
   width: 215px;
   font-family: "Montserrat";
@@ -561,12 +561,19 @@ header .cross {
   -webkit-appearance: none;
   appearance: none;
   outline-width: 0;
+  font-weight: 500;
+  font-size: 12px;
 }
 #directory .content-directory .filter-container-prof .form-control input {
   cursor: pointer;
 }
 #directory .content-directory .filter-container-prof .form-control li {
   padding-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+#directory .content-directory .filter-container-prof .form-control li label {
+  padding-left: 5px;
 }
 #directory .content-directory .filter-container-prof .form-control:focus-visible {
   outline: 0;
@@ -579,7 +586,7 @@ header .cross {
 }
 #directory .content-directory .feedback-container p {
   font-weight: normal;
-  font-size: 24px;
+  font-size: 18px;
   line-height: 43px;
 }
 #directory .blocks-container {
@@ -612,7 +619,7 @@ form.wpcf7-form {
   border-radius: 4px;
   font-family: inherit;
   border: 1px solid transparent;
-  font-size: 20px;
+  font-size: 16px;
   color: #5A5A5A;
   transition: all 250ms linear;
   outline: none;
