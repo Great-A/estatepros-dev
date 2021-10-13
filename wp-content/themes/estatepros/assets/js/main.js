@@ -13,74 +13,63 @@ jQuery(document).ready(function ($) {
 	});
 
 
-	// $(document).on("change", "#location-filter", function (e) {
-	// 	e.preventDefault();
-	// 	var currentCategoryId = parseInt($('#filter-category').val()),
-	// 		currenLocation = $(this).val();
-	//     $('.nobody-found').remove();
-	// 	professionalFilter(currentCategoryId, currenLocation);
-	// });
 
 	$(document).on("change", ".checkItemLocation", function (e) {
-
-		professionalFilter(0, 0);
+		professionalFilter();
 
 	});
 
 	$(document).on("change", ".checkItemCategories", function (e) {
-		// e.preventDefault();
-		// var currentCategoryId = parseInt($(this).val()),
-		// 	currenLocation = $('#location-filter').val();
-		// $('.nobody-found').remove();
-		// professionalFilter(currentCategoryId, currenLocation);
-		professionalFilter(0, 0);
+		professionalFilter();
 	});
 
 
-	function professionalFilter(categoryID, location) {
+	function professionalFilter() {
 
-		var currentCategoryId = categoryID,
-			currenLocation = location,
-			professional = $('.professional'),
+		var professional = $('.professional'),
 			found = 0,
-			checkedLocation = $('.checkItemLocation:checked');
-		checkedCategories = $('.checkItemCategories:checked');
+			checkedLocation = $('.checkItemLocation:checked'),
+			checkedCategories = $('.checkItemCategories:checked');
 
-		professional.hide();
-		for (var i in checkedLocation) {
-			var itemLocation = checkedLocation[i];
-			var itemLocationVal = itemLocation.value;
-			var prof_locations = $(".professional[data-location=" + itemLocationVal + "]");
-			prof_locations.show();
-		}
+		if (checkedLocation.length == 0 && checkedCategories.length == 0) {
+			professional.show();
+			$('.nobody-found').remove();
 
-		for (var j in checkedCategories) {
-			var itemCategories = checkedCategories[j];
-			var itemCategoriesVal = itemCategories.value;
+		} else {
+			professional.hide();
+			var locationArray = [];
+			for (var k = 0; checkedLocation.length > k; k++) {
+				var itemLocation = checkedLocation[k];
+				locationArray.push(itemLocation.value);
+			}
 
-			for (var i in professional) {
-				var itemProfessional = professional[i],
-				jqItem = $(itemProfessional),
-				cats = jqItem.data('post-category-id').toString(),
-				catsList = cats.split(',');
-				if ($.inArray( itemCategoriesVal, catsList )!= -1) {
+			for (var i = 0; professional.length > i; i++) {
+				var itemProfessional = professional[i];
+				var jqItem = $(itemProfessional);
+				var cats = jqItem.data('post-category-id').toString();
+				var catsList = cats.split(',');
+				var profLocation = jqItem.data('location');
+
+				for (var j = 0; checkedCategories.length > j; j++) {
+					var checkedCategoryID = checkedCategories[j].value;
+
+					if ($.inArray(checkedCategoryID, catsList) != -1 && $.inArray(profLocation, locationArray) != -1 || $.inArray(checkedCategoryID, catsList) != -1 && checkedLocation.length == 0) {
+						jqItem.show();
+					}
+				}
+				if ($.inArray(profLocation, locationArray) != -1 && checkedCategories.length == 0) {
 					jqItem.show();
 				}
+
+				if (jqItem.is(':visible')) {
+					found++;
+				}
+
 			}
-		
-
-
-
-			// var prof_locations = $(".professional[post-category-id=" + itemCategoriesVal + "]");
-			// prof_locations.show();
-		}
-
-		if (checkedLocation.length == 0) {
-			professional.show();
-		}
-
-		if (checkedCategories.length == 0) {
-			professional.show();
+			$('.nobody-found').remove();
+			if (found === 0) {
+				$('.row.prof-box').append('<div class="nobody-found">Nobody found</div>');
+			}
 		}
 
 

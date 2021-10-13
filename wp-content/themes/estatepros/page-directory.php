@@ -29,8 +29,6 @@ $subtitle_2_directory = get_field('subtitle_2_directory', get_the_ID());
                         </div>
                         <h4>Location</h4>
                         <div class="prof-location">
-
-                            <!-- <option value="">Show all</option> -->
                             <ul id="location-filter" class="form-control">
                                 <?php
                                 $location_prof = acf_get_field('location_prof');
@@ -44,32 +42,11 @@ $subtitle_2_directory = get_field('subtitle_2_directory', get_the_ID());
                                 }
                                 ?>
                             </ul>
-
-                            <!-- 
-                            <select id="location-filter" class="form-control">
-                                <option value="">Show all</option>
-                                <?php
-                                $location_prof = acf_get_field('location_prof');
-
-                                foreach ($location_prof['choices'] as $value => $label) {
-                                ?>
-                                   <option value="<?= $value ?>"><?= $label ?></option>
-
-                                    <input type="checkbox" id="<?= $label ?>" name="<?= $label ?>" value="<?= $value ?>">
-                                    <label for="<?= $label ?>"><?= $label ?></label>
-                                <?php
-                                }
-                                ?>
-
-                            </select> -->
-
-
                         </div>
 
                         <h4>Category</h4>
                         <div class="prof-category">
                             <ul name="filter-category" id="filter-category" class="form-control">
-                                <!-- <option value="0">Show all</option> -->
                                 <?php
                                 $args = array(
                                     'post_type' => 'professionals',
