@@ -148,13 +148,19 @@
   }
   #directory .content-directory .filter-container-prof .filter-prof {
     margin: 0;
+    padding-bottom: 24px;
   }
   #directory .content-directory .filter-container-prof .filter-prof .filter-main-wrapper {
     padding: 0;
     text-align: center;
   }
   #directory .content-directory .filter-container-prof .filter-prof .form-control {
-    min-width: 275px;
+    min-width: 250px;
+    margin: auto;
+    text-align: left;
+  }
+  #directory .content-directory .prof-location {
+    padding-bottom: 20px;
   }
   #directory .content-directory .prof-category ul {
     text-align: center;
