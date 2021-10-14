@@ -167,12 +167,10 @@ jQuery(document).ready(function ($) {
 	}
 
 	jQuery(window).on('load', function () {
-		if (window.location.search) {
-			var cat = window.location.search.split('=');
-
-			if (cat && cat[1] !== undefined) {
-				jQuery('#filter-category').val(cat[1]).trigger('change');
-			}
+		let searchParams = new URLSearchParams(window.location.search);
+		if (searchParams.has('cat')) {
+			var cat = searchParams.get('cat');		
+				jQuery('#filter-category input[value=' + cat +']').trigger('click');
 		}
 	});
 
